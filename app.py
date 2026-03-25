@@ -1,4 +1,5 @@
 #Programa de inventario
+
 from servicios import *
 
 #Empezamos dandole la bienvenida al usuario al programa 
@@ -6,7 +7,6 @@ from servicios import *
 print("\n BIENVENIDO AL SISTEMA DE INVENTARIO \n")
 
 
-# Creamos un menu con las opciones que tiene el usuario dentro del programa 
 # Hacemos un ciclo repetido con while para que este se repita siempre y cuando se cumplas las condiciones 
 inventario=[]
 val=1
@@ -53,11 +53,14 @@ while val == 1:
         
         eliminar_producto(inventario, nombre)
         print("Se ah eliminado correctamente")
+        
+    #
+        
 
-    elif option == 8:
+    elif option == 6:
         print (calcular_estadisticas(inventario))
 
-    #Si la opcion es 4 entonces:
+    #Si la opcion es 9 entonces:
     #Este saldra del programa 
     else:
         print("SALIENDO..")

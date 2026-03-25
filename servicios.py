@@ -8,7 +8,9 @@ def menu():
     print("4. Actualizar producto.")
     print("5. Eliminar producto.")
     print("6. Calcular estadisticas.")
-    print("7. Salir.")
+    print("7. Guardar CSV.")
+    print("8. Cargar CSV.")
+    print("9. Salir.")
 
 #Creamos una funcion para la opcion 1 
 #Si la opcion es 1 entonces el programa Continua pidiendole los datos del producto al usuario(nombre del producto, precio y cantidad)
@@ -43,7 +45,7 @@ def mostrar_inventario(inventario):
         for i in inventario:
             print(f"Nombre: {i['nombre']} | Precio: ${i['precio']} | Cantidad: {i['cantidad']}")
 
-#definimos una funcion para buscar el producto dentro del invetario
+#Opcion3 :definimos una funcion para buscar el producto dentro del invetario
 
 def buscar_producto(inventario, nombre):
     for i in inventario:
@@ -51,7 +53,7 @@ def buscar_producto(inventario, nombre):
             return i
     return None
    
-#creamos una funcion para actualizar los datos de los productos ingresados en el inventario
+#Opcion4: creamos una funcion para actualizar los datos de los productos ingresados en el inventario
 
 def actualizar_producto(inventario, nombre, nuevo_nombre, nuevo_precio=None, nueva_cantidad=None):
     for i in inventario:
@@ -64,6 +66,8 @@ def actualizar_producto(inventario, nombre, nuevo_nombre, nuevo_precio=None, nue
                 i["cantidad"] = nueva_cantidad
             return i
     return None
+
+#Opcion5: creamos una funcion para eliminar productos
             
 def eliminar_producto(inventario, nombre):               
     eliminar = input("deseas eliminar? (y/n): ").lower().strip()
@@ -79,20 +83,30 @@ def eliminar_producto(inventario, nombre):
             
             
 
-#Mostrara la cantidad de productos en el inventario 
-#Sumara el total de los productos agregados al invetario
+#Opcion8: calculamos las estadisticas de los productos
             
 def calcular_estadisticas(inventario):
     if len(inventario)== 0:
         print("No hay elementos para calcular")
         return None
     else:
-        total_value = 0
-        cant_total = 0
+        def producto_mas_caro(inventario):
+            if not inventario:
+                return None
+            return  max(inventario, key=lambda x: x["precio"])
+        def producto_mayor_stock(inventario):
+            if not inventario:
+                return None
+            return  max(inventario ,key=lambda x: x["cantidad"])
+        
+        valor_total = 0
+        unidades_totales = 0
         for i in inventario:
-            cant_total += i["cantidad"]
-            total_value += i["precio"] * i["cantidad"]
+            unidades_totales += i["cantidad"]
+            valor_total+= i["precio"] * i["cantidad"]
         return{
-            "Cantidad de productos":cant_total,
-            "Precio Total de productos":total_value
+            "Cantidad de productos":unidades_totales,
+            "Precio Total de productos":valor_total,
+            "producto mas caro":producto_mas_caro(inventario),
+            "producto con mayor stock":producto_mayor_stock(inventario)
             }
