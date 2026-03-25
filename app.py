@@ -9,7 +9,7 @@ print("\n BIENVENIDO AL SISTEMA DE INVENTARIO \n")
 # Creamos un menu con las opciones que tiene el usuario dentro del programa 
 # Hacemos un ciclo repetido con while para que este se repita siempre y cuando se cumplas las condiciones 
 inventario=[]
-val=(1)
+val=1
 while val == 1:
     
     menu()
@@ -54,7 +54,7 @@ while val == 1:
         eliminar_producto(inventario, nombre)
         print("Se ah eliminado correctamente")
 
-    elif option == 9:
+    elif option == 8:
         print (calcular_estadisticas(inventario))
 
     #Si la opcion es 4 entonces:
