@@ -2,10 +2,10 @@ from servicios import *
 from archivos import *
 
 inventario = []
-
+option = 0
 print("SISTEMA DE INVENTARIO")
 
-while True:
+while option !=9:
     menu()
 
     try:
